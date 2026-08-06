@@ -1,0 +1,22 @@
+body{
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.codigo span{
+    color: #ffffff;
+    font-size: 80px;
+    filter: blur(20px);
+    transition: 0.3s;
+}
+.codigo {
+    display: flex;
+    gap: 20px;
+}
+.codigo  {
+    
+}
+
+
