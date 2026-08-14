@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de validação</title>
+    <style>
+        /*Criar estilo para o formulario: contendo cores, espaços e posição*/
+        body {
+            background-color: #ff7976;
+
+        }
+        input {
+            background-color: #ffb69c;
+        }
+    </style>
 </head>
 <body>
     <form action="">
         <input type="text" id="nome" placeholder="Nome">
         <p id="errorName"></p>
         
-        <input type="email" id="email placeholder=Email">
+        <input type="email" id="email" placeholder="Email">
         <p id="errorEmail"></p>
 
-        <input type="passaward" id="passaward" placeholder="Senha">
-        <p id="errorsenha"></p>
+        <input type="passaward" id="senha" placeholder="Senha">
+        <p id="errorSenha"></p>
 
         <button id="botao" disabled>Enviar</button>
     </form>
@@ -28,6 +38,40 @@
         // Expressoes regulares para email e senha
         const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const regexSenha = /^(?=.*[a-zA-Z])(?=.*[\w_]).{8,}$/;
+
+        //Função para validar formulario
+        function validar(){
+            
+            let valido = true;
+            //Validação do campo nome
+
+            if(nome.value === ""){
+                errorName.innerText = "Nome obrigatório";
+                valido = false;
+            } else {
+                errorName.innerText = "";
+        }
+        // Validação do campo email
+        if (!regexEmail.test(email.value)) {
+            errorEmail.innerText = "Email inválido.";
+            valido = false;
+        } else {
+            errorEmail.innerText = "";
+        }
+        //Desafio: criar validação do campo senha
+        if (!regexSenha.test(senha.value)) {
+            errorSenha.innerText = "Senha inválido.";
+            valido = false;
+        } else {
+            errorSenha.innerText = "";
+        }
+
+        botao.disabled = !valido;
+
+        }
+        nome.addEventListener("input", validar);
+        email.addEventListener("input", validar);
+        senha.addEventListener("input", validar);
     </script>
 </body>
 </html>
